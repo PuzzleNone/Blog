@@ -21,7 +21,8 @@ tags:
 |计算机网络(谢希仁,第8版)|[1](https://www.bilibili.com/video/BV1t34y1d7yA/)||
 
 
-
+[STM32](https://www.bilibili.com/video/BV1KM4m1U7f1/)
+[PCB](https://www.bilibili.com/video/BV1AT421Y7DS)
 [PS shortcut](https://blog.csdn.net/zipack/article/details/78978800)
 
 
