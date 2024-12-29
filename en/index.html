@@ -1,16 +1,8 @@
 <!--
-词性(句结构:分词组)
-num >exceed <(deficit)
-    
-主句 定于(修饰)
-时间 every [condense]
-为了 事(in order to) 人(for)
+功能
 
-${}
-repeat
-substr,substring
-深拷贝
-array map for forEcho push
+thema主体/时间
+
 -->
 <html data-thema="light">
 <script>
@@ -117,9 +109,55 @@ To a large extent, computers have already __permeate__ most aspects of our lives
 
 
 
+[U7]
+People __donate__ canned food and old clothes most frequently, but rarely do they think about bringing in underwear - it's one of the most obvious but overlooked needs of the homeless.
+Brian Wood watched his financial life __spiral__ downward just when he thought he had overcome the obstacles which had been dominating his past.
+They are to leave the house with only their personal possessions, for they have got a letter ordering the immediate __termination__ of their occupancy (居住).
+The company was reportedly going bankrupt and this would result in the __layoff__ of thousands of employees.
+The princess who was brought up in wealth understood that many things that are common and everyday to her are unimaginable luxuries to people on __subsistence__ wages.
+Young students should develop a broad __spectrum__ of interests, which their parents should encourage and support as best as possible.
+I asked the waitress to refill my coffee cup and she happily __complied__ repeatedly until I had consumed enough coffee to stay up all night and study for my exam.
+Though she lost the title of female world swimming champion last year, she __reclaimed__ it this year when she gave it all she could.
+This type of system which __originated__ the United Kingdom has been widely used throughout Europe and is gaining in popularity in the United States of America and Japan.
+Failure to make the request will be fatal to the accuser's claim if the relevant limitation period has __expired__ , unless an extension of time is granted.
+
+//
+
+
+
+[U8]
+News stories __overlap__: Morning paper headlines take account of the previous evening's radio and TV stories, and the electronic media pick up items from the daily press.
+Lucy stretched up to kiss her dad's cheek lightly, and he patted his daughter as if he was __confering__ an honor to her.
+Beth was __hesitant __ about visiting her exboyfriend; she worried that he might refuse to talk to her.
+When humans first traveled into outer space, it was as revolutionary a(n) __milestone__ in human culture as the invention of the wheel.
+Perplexed, she turned and noticed her husband had collapsed and was slumped on the floor behind the counter. She rushed to him and __cradled__ his head in her arms.
+Health experts are now __preaching__ that even a little exercise, such as doing housework or light gardening, is far better than none at all.
+Everyone is entitled to the __presumption__ of innocence until they are proved to be guilty.
+Maintaining harmony at home is essential for the well-being of an individual, a couple and their __offerings__.
+
+//
+
+
+
 
 `
+
 </script>
+<!--
+词性(句结构:分词组)
+num >exceed <(deficit)
+    
+主句 定于(修饰)
+时间 every [condense]
+为了 事(in order to) 人(for)
+
+${}
+repeat
+substr,substring
+深拷贝
+array map for forEcho push
+
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Word In Use:A</title>
@@ -161,6 +199,7 @@ To a large extent, computers have already __permeate__ most aspects of our lives
     <!-- <input type="button" value="Flush" @click="app._data.sentencesS=sentences.filter(e=>e.f=='U'+document.querySelector('#Unit').value);setChioces();;sentencesS.sort(randomNumber);choices.sort(randomNumber);"> -->
     <!-- <input type="button" value="Flush" @click="app._data.sentencesS=sentences.filter(e=>e.f==document.querySelector('#Unit').value);setChioces();;sentencesS.sort(randomNumber);choices.sort(randomNumber);"> -->
     <input type="button" value="Shuffle" @click="sentencesS.sort(randomNumber);choices.sort(randomNumber);">
+    <input type="button" value="Key" onclick="prompt('Key: ')">
     <input type="button" value="Help" onclick="confirm('答案在下划线上,选择即可查看(手机:长按,电脑:双击)\n建议搭配(划词翻译+自动朗读)使用\n建议使用电脑')">
     <select name="data-thema">
         <option value="light">Light</option>
@@ -319,6 +358,9 @@ document.querySelector("#app #Unit").addEventListener('change', function(event) 
     }
 
     select[name=data-thema]{
+        float: right;
+    }
+    #app input[type=button][value=Key]{
         float: right;
     }
     #app input[type=button][value=Help]{
