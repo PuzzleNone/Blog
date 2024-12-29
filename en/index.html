@@ -1,0 +1,312 @@
+<!--
+词性(句结构:分词组)
+num >exceed <(deficit)
+    
+主句 定于(修饰)
+时间 every [condense]
+为了 事(in order to) 人(for)
+
+${}
+repeat
+substr,substring
+深拷贝
+array map for forEcho push
+-->
+<html data-thema="light">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word In Use:A</title>
+<script>
+    const lib_bps = [//bp=backup
+        {hostname: "0wing.top",basepath: "/js/vue/2"},
+        {hostname: "cdn.jsdelivr.net",basepath: "/npm/vue@2/dist"},
+    ];
+    const lib_bp_is = {//is=indexs
+    }
+    window.addEventListener("error",(e)=>{
+        if (e instanceof ErrorEvent||e.target.tagName!="SCRIPT"){
+            return;
+        };
+        const lib_url = new URL(e.target.src);
+        const lib_file = lib_url.pathname.substring(lib_url.pathname.lastIndexOf("/")+1);
+        if (!lib_bp_is[lib_file]){
+            lib_bp_is[lib_file] = 0;
+        }
+        const lib_bp_i = lib_bp_is[lib_file];
+        if (lib_bp_i>=lib_bps.length){
+            return;
+        }
+        const lib_bp = lib_bps[lib_bp_i];
+        lib_url.protocol = "https:"
+        lib_url.hostname = lib_bp.hostname;
+        lib_url.pathname = `${lib_bp.basepath}/${lib_file}`;
+        document.write(`\<script src="${lib_url.toString()}">\<\/script>`);
+        lib_bp_is[lib_file]++;            
+    },true);
+</script>
+<div id="app">
+    <!-- <input type="button" value="-" @click="unit--">
+    <input type="text" id="Unit" v-model="unit">
+    <input type="button" value="+" @click="unit++"> -->
+    <select v-model="mode" name="Unit" id="Unit">
+        <option :value="unitName" v-for="unitName in unitNames">{{unitName}}</option>
+    </select>
+    <!-- <input type="button" value="Flush" @click="app._data.sentencesS=sentences.filter(e=>e.f=='U'+document.querySelector('#Unit').value);setChioces();;sentencesS.sort(randomNumber);choices.sort(randomNumber);"> -->
+    <!-- <input type="button" value="Flush" @click="app._data.sentencesS=sentences.filter(e=>e.f==document.querySelector('#Unit').value);setChioces();;sentencesS.sort(randomNumber);choices.sort(randomNumber);"> -->
+    <input type="button" value="Shuffle" @click="sentencesS.sort(randomNumber);choices.sort(randomNumber);">
+    <input type="button" value="使用说明" onclick="confirm('答案在下划线上,选择即可查看\n建议搭配(划词翻译+自动朗读)使用')">
+    <select name="data-thema">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+    <div class="choices">
+        <div class="choice" v-for="cs in choices">
+            <span v-for="c in cs">{{c}}</span>
+        </div>
+    </div>
+    <div class="tests">
+        <div v-for="s in sentencesS" v-html="createTest(s.q,s.a)"></div>
+    </div>
+</div>
+<script src="http://127.0.0.1/static/js/vue/2/vue.min.js"></script>
+<script>
+//ADD_TESTS
+// [tag] ... \n\n
+// __word__不可以有空格
+text = `
+
+
+[U1]
+Most cities in the country have introduced "Clean Air Zones" __whereby__ factories and households are only allowed to burn smokeless fuel.
+He knows that the __pursuit__ of social status can consume vast amounts of his time and effort.
+The doctors are at a loss because so far no medicine has been found to __inhibit__ the spread of the disease.
+We see many special education directors trying to __maintain__ the quality of their programs with much less money and much smaller staff.
+People there are told it is their __patriotic__ duty to support the national economy by buying their own products.
+Darwin's thinking both drew upon and __transcended__ the conventional ideas of his time.
+In spite of all your __endeavors__, there may be times when you encounter difficulties in the training process.
+My advice to Mr. Stewart is to think carefully before entering into a career in medicine, as this is a field which requires a lot of __dedication__ and long working hours.
+Most Chinese parents would prefer to choose some professions that are stable and could bring __prestige__ and economic benefits.
+It is legally possible for an elderly person to __nominate__ some to act for them, should they become incapable of looking after themselves.
+
+//
+
+
+
+[U2]
+Kids are more likely to __intervene__ in a situation if they believe their parents expect them to help.
+The first lesson I learned as a newcomer for the company was never to __underestimate__ degree of difficulty I would face in career advancement.
+Just as I started to think that I was never going to get well, the illness began to __recede__.
+Whatever the decision is, I would like you to know that your department is my first choice and I __deem__ it a great honor if I could study in your department.
+During one particularly __bleak__ moment in my career, a senior colleague of mine said to me, “If you follow your dreams, the money will come. Follow the money, and you'll lose your dreams.”
+Unless we can find a way to __appraise__ nature and then invest in protecting it, our basic life-support systems are going to collapse.
+The blizzard (暴风雪) moved south, turning for three days. into an icy rain that __paralyzed__ the airports for three days.
+In this introduction we have diagnosed some of the causes of the illness and, in the following chapters, we will draw attention to its various unpleasant __symptoms__.
+In those days, divorce under any circumstances was socially unacceptable and there was great __dismay__ in the family who went through it.
+Every time she talked about being rejected in her hunt for a job, she seemed on the __brink__ of tears, and I would quickly switch the conversation to another topic.
+
+//
+
+
+
+[U3]
+As a number of authors point out,the urge to migrate is a(n) __integral__ part of human nature.
+Children should be allowed to __cherish__ those few years of innocence before they have to learn the truth about the real world.
+He has been __afflicted__ by a horrible disease,from which one of his best friends died two weeks ago.
+The results of the survey are __noteworthy__ and useful despite being from a small sample.
+The director said that they needed a young actress who could __portray__ someone who was both unbalanced and confident at the same time.
+Praise must be used wisely to __compliment__ students who perform up to expectations and to encourage students to perform to maximum levels.
+In the __domain__ of research,it is an accepted fact that scientific publications have to be written or translated into English to get published,acknowledged,and cited.
+He received a(n) __anonymous__ call threatening to disclose details of his affair if he didn’t pay the money.
+The movie presents Lincoln as a strong-willed, __conscientious__ man who led the US through a moral,constitutional and political crisis.
+It is understandable that the health and welfare of their family is a(n) __perpetual__ concern for this young couple.
+
+//
+
+
+[U4]
+Although secondary education is __compulsory__, parents are not required to send their children to state schools.
+The economic situation has been worsening, causing economists to __contemplate__ whether the present policies are sustainable.
+He was found guilty and was __imprisoned__ is the Tower of London, where he died very quickly, aged only 
+It is obvious that the future of the Internet is to __globalize__ more and more areas of the world, and that e-commerce and e-entertainment are going to go for more and more markets.
+However, your current losses should soon be __offset__ by gains; the fund will produce a positive return of 6 percent over a nine-month period.
+Because she was so tall and slim, all the clothes looked marvelous on her and the other girls would __groan__ their envy.
+This can be a helpful approach in discussion-someone may regard you as __stubborn__ since you never want to change your mind, whereas you see yourself as determined.
+On weekends, the school parking lot is almost empty except that a few cars __cluster__ near the entrance.
+In the photographer’s finest pictures there is also a degree of __ambiguity__ which allows them to be interpreted in a variety of ways.
+Tim stretched out a hand in apology for his thoughtless remarks and was __consoled__ by a firm handshake from Mark.
+
+//
+
+
+
+`
+
+let testUrl = "./30.WordInUse_english-0.1-me-.txt";
+function getContent(testUrl) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", testUrl, false); // 第三个参数设置为false表示同步请求
+    xhr.send();
+
+    if (xhr.status === 200) {
+        let data = xhr.responseText;
+        return data;
+    } else {
+        console.error('获取文件时出错:', xhr.statusText);
+    }
+}
+
+
+if (text.trim() === "") {
+    console.log("文本是空的");
+    text = getContent(testUrl);//xhr/fetch/function/放入
+    // fetch(testUrl)
+    // .then(response => {
+    //     // 检查请求是否成功
+    //     if (!response.ok) {
+    //         throw new Error('Network response was not ok ' + response.statusText);
+    //     }
+    //     return response.text(); // 将响应体解析为文本
+    // })
+    // .then(data => {
+    //     console.log('Success:', data); // 成功后打印到控制台
+    //     text = data;
+    // })
+    // .catch(error => {
+    //     console.error('There has been a problem with your fetch operation:', error);
+    // });
+} else {
+    console.log("文本不是空的");
+}
+
+let app = new Vue({
+    el: "#app",
+    data: {
+        unit: 1,
+        unitNames:[],
+        sentencesS: [],
+        choices: [],
+        mode: ""
+    },
+    computed:{
+        /*
+        choices(){
+            cs = [];
+            sentences.forEach((s)=>{
+                cs.push(s.a);
+            });
+            return cs;
+        }
+        */
+    },
+    method: {
+    }
+});
+
+let sentences = [];
+let choices = [];
+let unitReg = /\[U\d+\]/g;
+// console.log(text);
+let unitNames = text.match(unitReg).map(unitName=>unitName.substring(unitName.indexOf("[")+1,unitName.indexOf("]")));
+let ansReg = /__\w+__/g
+let tmp_unit_pos_s = 0;
+unitNames.forEach((unitName)=>{
+    let i_s = text.indexOf(unitName,tmp_unit_pos_s)+unitName.length+2;
+    let i_e = text.indexOf("\n\n",i_s);//var:\n\n txt:\r\n
+    let sentences_ = text.substring(i_s,i_e).split("\n");
+    // console.log(i_s,text.indexOf("\r\n",i_s));
+    sentences_.forEach(e=>{
+        // console.log(e);
+        if (!(/ __\w+__( |,|\.|!)/.test(e))){console.log(/ __\w+__ /.exec(e),e.match(ansReg))}; ////数据约定
+        sentence = {}
+        sentence["q"] = e.replace(ansReg,"_".repeat(6));
+        try{
+          sentence["a"] = e.match(ansReg).map(ans_=>ans_.substring(2,ans_.length-2));
+        }catch(e){
+            console.error(e.message);
+            console.warn(sentence["q"]);
+        }
+        sentence["f"] = unitName;
+        sentences.push(sentence);
+    });
+    tmp_unit_pos_s = i_e;
+});
+app._data.unitNames = unitNames;
+app._data.sentencesS = JSON.parse(JSON.stringify(sentences));
+
+function setChioces(){
+    choices = [];
+    app._data.sentencesS.forEach((s)=>{
+            choices.push(s.a);
+        })
+    app._data.choices = choices//.sort(()=>0.5-Math.random());
+}
+setChioces();
+function createTest(q,a){
+    q_1 = q.substring(0,q.indexOf("__"));
+    q_2 = q.substring(q.lastIndexOf("__")+2);
+    a_ = `<span class="ans">${a}</span>`
+    qa = `${q_1}${a_}${q_2}`
+    return qa
+}
+randomNumber = function(){
+    return 0.5-Math.random();
+}
+
+//select init值没有自动获取
+let html = document.querySelector("html");
+let thema = document.querySelector("select[name=data-thema]");
+thema.addEventListener('change', function(event) {
+    html.dataset.thema = html.dataset.thema=== "light"?"dark":"light";
+})
+
+document.querySelector("#app #Unit").addEventListener('change', function(event) {
+    app._data.sentencesS=sentences.filter(e=>e.f==document.querySelector('#Unit').value);setChioces();;sentencesS.sort(randomNumber);choices.sort(randomNumber);
+})
+</script>
+<style>
+    html[data-thema=light]{
+        --gb: #f4f4f4;
+        --c: #333;
+    }
+    html[data-thema=dark]{
+        --gb: #333;
+        --c: #a4a4a4;
+    }
+
+    html {
+        background-color: var(--gb);
+        color: var(--c);
+    }
+
+    select[name=data-thema]{
+        float: right;
+    }
+    #app input[type=button][value=使用说明]{
+        float: right;
+    }
+
+    #app {
+        max-width: 800px;
+        min-width: 200px;
+        margin: 0px auto;
+    }
+    #app .choices{
+        padding: 5px;
+        margin: 10px;
+        border: 2px solid black;
+    }
+    #app .choices .choice{
+        display: inline-block;
+        margin: 5px;
+        border: 1px solid black;
+    }
+    #app .tests {
+        text-indent: 2rem;
+    }
+    .ans {
+        text-decoration: underline;
+        color: var(--gb);
+        text-decoration-color: var(--c);
+    }
+</style>
+</html>
