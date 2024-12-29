@@ -54,14 +54,18 @@ array map for forEcho push
     <!-- <input type="button" value="Flush" @click="app._data.sentencesS=sentences.filter(e=>e.f=='U'+document.querySelector('#Unit').value);setChioces();;sentencesS.sort(randomNumber);choices.sort(randomNumber);"> -->
     <!-- <input type="button" value="Flush" @click="app._data.sentencesS=sentences.filter(e=>e.f==document.querySelector('#Unit').value);setChioces();;sentencesS.sort(randomNumber);choices.sort(randomNumber);"> -->
     <input type="button" value="Shuffle" @click="sentencesS.sort(randomNumber);choices.sort(randomNumber);">
-    <input type="button" value="使用说明" onclick="confirm('答案在下划线上,选择即可查看\n建议搭配(划词翻译+自动朗读)使用')">
+    <input type="button" value="Help" onclick="confirm('答案在下划线上,选择即可查看(手机:长按,电脑:双击)\n建议搭配(划词翻译+自动朗读)使用\n建议使用电脑')">
     <select name="data-thema">
         <option value="light">Light</option>
         <option value="dark">Dark</option>
     </select>
+    <select name="Source">
+        <option value="B2">新视野2</option>
+        <option value="B3" selected>新视野3</option>
+    </select>
     <div class="choices">
         <div class="choice" v-for="cs in choices">
-            <span v-for="c in cs">{{c}}</span>
+            <div v-for="c in cs">{{c}}</div>
         </div>
     </div>
     <div class="tests">
@@ -281,10 +285,12 @@ document.querySelector("#app #Unit").addEventListener('change', function(event) 
     select[name=data-thema]{
         float: right;
     }
-    #app input[type=button][value=使用说明]{
+    #app input[type=button][value=Help]{
         float: right;
     }
-
+    #app select[name=Source]{
+        float: right;
+    }
     #app {
         max-width: 800px;
         min-width: 200px;
